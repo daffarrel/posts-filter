@@ -8,17 +8,15 @@ class PostsFilter extends EventEmitter {
 
   getPostsByRegex(posts, postRegex) {
     return posts.filter(curr => {
-      return curr.content.match(postRegex);
+      return curr.message.match(postRegex);
     });
   }
 
   getPostsByTimeRange(posts, time) {
     // Time ranges are in minutes
     const rangeFrom = time;
-    return posts.filter(curr => {
-      console.log(curr.time, Math.round((new Date() / 60000) - time), (curr.time < Math.round((new Date() / 60000) - time)));
-      
-      return curr.time < Math.round((new Date() / 60000) - time);
+    return posts.filter(curr => {      
+      return curr.created_time < Math.round((new Date() / 60000) - time);
     });
   }
   
@@ -31,7 +29,6 @@ class PostsFilter extends EventEmitter {
 
   sendPost(post) {
     let msg = this.getResponse('Ok', false);
-    console.log(post);
     axios({
       method: process.env.SEND_METHOD,
       url: process.env.SEND_URL,

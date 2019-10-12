@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 filter.on('sendPost', (post) => {
-  console.log('Send post');
+  // TODO
 });
 
 /**
@@ -20,10 +20,11 @@ app.get('/posts/top', (req, res) => {
     const postRegex = new RegExp(process.env.POSTS_REGEX);
     const time = process.env.POSTS_TIME_RANGE;
 
+    if(!req.body) {
+      res.send('Body is missing');
+    }
     // Filter by time
-    let posts = filter.getPostsByTimeRange(req.body.posts, time);
-
-    console.log(posts);
+    let posts = filter.getPostsByTimeRange(req.body, time);
 
     if(posts !== false) {
       // Filter by keywords (regex)
