@@ -21,11 +21,11 @@ It will afterwards send filtered data trought http request.
 
 #### Environment variables
 
-- POSTS_REGEX: 
+- POST_REGEX: 
 
 Regex for valid posts. Withouth slashes.
 
-- POSTS_TIME_RANGE
+- POST_TIME_RANGE
 
 How old can valid posts be. In minutes. If one would like to include all posts from one day this would be 1440
 

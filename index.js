@@ -17,8 +17,8 @@ filter.on('sendPost', (post) => {
  * Gets top posts from the array of all posts in input
  */
 app.get('/posts/top', (req, res) => {
-    const postRegex = new RegExp(process.env.POSTS_REGEX);
-    const time = process.env.POSTS_TIME_RANGE;
+    const postRegex = new RegExp(process.env.POST_REGEX);
+    const time = process.env.POST_TIME_RANGE;
 
     if(!req.body) {
       res.send('Body is missing');
@@ -28,7 +28,7 @@ app.get('/posts/top', (req, res) => {
 
     if(posts !== false) {
       // Filter by keywords (regex)
-      posts = filter.getPostsByRegex(posts, postRegex);
+      posts = filter.filterPosts(posts);
       res.send(posts);
     } else {
       res.send({

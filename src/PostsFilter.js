@@ -6,9 +6,9 @@ class PostsFilter extends EventEmitter {
     super();
   }
 
-  getPostsByRegex(posts, postRegex) {
+  filterPosts(posts) {
     return posts.filter(curr => {
-      return curr.message.match(postRegex);
+      return curr.message.match(process.env.POST_REGEX) && this.hasPicture(curr);
     });
   }
 
@@ -26,6 +26,10 @@ class PostsFilter extends EventEmitter {
       message: message ? message : 'Default',
       error: error ? error : false
     };
+  }
+
+  hasPicture(message) {
+    return message.full_picture && process.env.POST_PICTURE;
   }
 
   sendPost(post) {
