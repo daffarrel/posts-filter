@@ -15,8 +15,9 @@ class PostsFilter extends EventEmitter {
   getPostsByTimeRange(posts, time) {
     // Time ranges are in minutes
     const rangeFrom = time;
-    return posts.filter(curr => {      
-      return curr.created_time < Math.round((new Date() / 60000) - time);
+    return posts.filter(curr => {
+      const created = Math.round(new Date(curr.created_time).getTime() / 60000);      
+      return created > Math.round((new Date() / 60000) - time);
     });
   }
   
