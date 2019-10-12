@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "Matej Jurko",
   "license": "ISC",
@@ -12,7 +12,9 @@
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "dotenv": "^8.1.0",
-    "express": "^4.17.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
     "nodemon": "^1.19.2"
   }
 }
