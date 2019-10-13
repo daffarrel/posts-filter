@@ -6,17 +6,16 @@ class PostsFilter extends EventEmitter {
     super();
   }
 
-  filterPosts(posts) {
-    return posts.filter(curr => {
+  filterPosts(posts) {  
+    return posts.filter(curr => {      
       return curr.message.match(process.env.POST_REGEX) && this.hasPicture(curr);
     });
   }
 
   getPostsByTimeRange(posts, time) {
     // Time ranges are in minutes
-    const rangeFrom = time;
     return posts.filter(curr => {
-      const created = Math.round(new Date(curr.created_time).getTime() / 60000);      
+      const created = Math.round(new Date(curr.created_time).getTime() / 60000);            
       return created > Math.round((new Date() / 60000) - time);
     });
   }
