@@ -29,7 +29,7 @@ app.get('/posts/top', (req, res) => {
     if(posts !== false) {
       // Filter by keywords (regex)
       posts = filter.filterPosts(posts);
-      res.send(posts);
+      res.send(posts[0]);
     } else {
       res.send({
         'message': 'No data returned',
