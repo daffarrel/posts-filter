@@ -8,7 +8,7 @@ class PostsFilter extends EventEmitter {
 
   filterPosts(posts) {  
     return posts.filter(curr => {      
-      return curr.message.match(process.env.POST_REGEX) && this.hasPicture(curr);
+      return curr.message ? curr.message.match(process.env.POST_REGEX) : true && this.hasPicture(curr);
     });
   }
 
