@@ -39,9 +39,3 @@ How old can valid posts be. In minutes. If one would like to include all posts f
 - POST_MIN_REACTIONS, POST_MIN_COMMENTS:
 
 Minimal number of reactions and comments for a post.
-
-- SEND_URL, SEND_METHOD
-
-Request url and method. This can be used to send data to other services.
-
-
