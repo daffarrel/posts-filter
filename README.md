@@ -18,7 +18,13 @@ It will afterwards return selected posts.
 3. Copy and rename .env.example and fill it with details
 4. Run using `npm run dev`
 
-The easiest way to deploy this is to do it using integration services. Setup modules so that they export all parameters for post, `totalCount` for reactions and `comment_count` for comments. Service accpets json data in request.
+The easiest way to deploy this is to do it using integration services. Setup modules so that they export all parameters for post, `totalCount` for reactions and `comment_count` for comments.
+
+### API docs
+
+- GET: `/api/posts/top`
+
+This endpoint takes post list as input in json form. It returns filtered post list.
 
 #### Environment variables
 
@@ -38,14 +44,4 @@ Minimal number of reactions and comments for a post.
 
 Request url and method. This can be used to send data to other services.
 
-
-### API docs
-
-- GET: `/posts/top`
-
-This endpoint takes post list as input in json form. It returns filtered post list.
-
-- POST: `/posts/send`
-
-Emits event. This can be additionally used to send data to other services.
 

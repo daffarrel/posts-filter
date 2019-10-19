@@ -8,15 +8,10 @@ const filter = new Filter();
 
 app.use(express.json());
 
-
-filter.on('sendPost', (post) => {
-  // TODO
-});
-
 /**
  * Gets top posts from the array of all posts in input
  */
-app.get('/posts/top', (req, res) => {
+app.get('/api/posts/top', (req, res) => {
     const postRegex = new RegExp(process.env.POST_REGEX);
     const time = process.env.POST_TIME_RANGE;
 
@@ -36,12 +31,6 @@ app.get('/posts/top', (req, res) => {
         'error': false
       });
     }
-  });
-
-  app.post('/posts/send', (req, res) => {
-    const posts = req.body;
-    const msg = filter.sendPost(posts);
-    res.send(msg);
   });
   
 const port = process.env.PORT || 3000;

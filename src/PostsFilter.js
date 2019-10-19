@@ -1,10 +1,4 @@
-const EventEmitter = require('events');
-const axios = require('axios').default;
-
-class PostsFilter extends EventEmitter {
-  constructor() {
-    super();
-  }
+class PostsFilter {
 
   filterPosts(posts) {  
     return posts.filter(curr => {     
@@ -49,28 +43,9 @@ class PostsFilter extends EventEmitter {
     else
       return post.comment_count >= process.env.POST_MIN_COMMENTS;
   }
-  
-  getResponse(message, error) {
-    return {
-      message: message ? message : 'Default',
-      error: error ? error : false
-    };
-  }
 
   hasPicture(message) {
     return !!(message.full_picture && process.env.POST_PICTURE);
-  }
-
-  sendPost(post) {
-    let msg = this.getResponse('Ok', false);
-    axios({
-      method: process.env.SEND_METHOD,
-      url: process.env.SEND_URL,
-      data: post
-    }).catch((error) => {
-      msg = this.getResponse(error);
-    });
-    return msg;
   }
 }
 
