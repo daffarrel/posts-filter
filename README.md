@@ -9,7 +9,7 @@ The idea for this microservice is to filter out posts on social media and then p
 - include / exclude users
 - include / exclude additional content (image, video)
 
-It will afterwards return selected posts.
+It will afterwards return selected posts. The goal of this project is to filter out only the most engagement.
 
 ### Configuration and setup
 
@@ -18,7 +18,7 @@ It will afterwards return selected posts.
 3. Copy and rename .env.example and fill it with details
 4. Run using `npm run dev`
 
-The easiest way to deploy this is to do it using integration services. Setup modules so that they export all parameters for post, `totalCount` for reactions and `comment_count` for comments.
+The easiest way to deploy this is to do it using integration services. Setup group modules so that they export all parameters for post, `totalCount` for reactions and `comment_count` for comments (these can only be received from different APIs). Then, merge this data in one json object and call this service's api. Then, you may add additional modules which post on social media or/and send you a notification.
 
 ### API docs
 
@@ -39,3 +39,7 @@ How old can valid posts be. In minutes. If one would like to include all posts f
 - POST_MIN_REACTIONS, POST_MIN_COMMENTS:
 
 Minimal number of reactions and comments for a post.
+
+- POST_PICTURE:
+
+If post has a picture
